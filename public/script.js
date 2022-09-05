@@ -118,21 +118,16 @@ function showLogs(json) {
     )
   }
 
-  $logsList.children('li').addClass(
-    `group
-      mb-4
-      rounded-r-[1.25rem]
-      py-1 px-3
-      border-l-2
-      border-sky-600
-      hover:border-sky-500 hover:cursor-pointer
-      hover:bg-slate-100`
-  )
+  $logsList
+    .children('li')
+    .addClass(
+      `group mb-4 py-1 px-3 border-l-4 border-greenuvu hover:cursor-pointer hover:bg-[#f9f9f9] hover:border-[#00843d]`
+    )
   $logsList.children('small').addClass(
     `text-sm
       font-bold
-      text-sky-600
-      group-hover:text-sky-500`
+      text-greenuvu
+      group-hover:text-[#00843d]`
   )
   $logsList.children('pre').addClass(`whitespace-pre-wrap`)
   $logsDiv.css('display', 'block')
