@@ -19,16 +19,29 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="bg-greylight dark:bg-browndark">
-    <header class="h-20 bg-white flex justify-center">
-      <div class="w-full max-w-2xl p-4 flex justify-between items-center">
-        <div>
+    <header class="h-20 bg-white flex justify-center dark:bg-browndark">
+      <div class="w-full max-w-3xl p-4 flex justify-between items-center">
+        <div class="flex items-center">
           <img
-            src="https://ryancluff.com/cs4690/img/uvu-logo.png"
-            class="w-40"
+            src="https://ryancluff.com/cs4690/img/uvu-icon.png"
+            class="w-24 mr-3 cursor-pointer"
             alt=""
           />
+          <p
+            class="
+              uppercase
+              text-lg
+              font-semibold
+              cursor-pointer
+              text-green
+              hidden
+              sm:block
+            "
+          >
+            Utah Valley University
+          </p>
         </div>
-        <div class="hidden">
+        <div class="hidden sm:block">
           <button class="py-1 px-6 mr-2 rounded-full bg-green text-white">
             Apply to UVU
           </button>
@@ -39,11 +52,11 @@
             MyUVU
           </button>
         </div>
-        <div class="">
+        <div class="sm:hidden">
           <div class="hamburger flex flex-col justify-between w-7 h-5">
-            <div class="w-full bg-green h-1"></div>
-            <div class="w-full bg-green h-1"></div>
-            <div class="w-full bg-green h-1"></div>
+            <div class="w-full bg-green h-1 uppercase"></div>
+            <div class="w-full bg-green h-1 uppercase"></div>
+            <div class="w-full bg-green h-1 uppercase"></div>
           </div>
         </div>
       </div>
@@ -59,13 +72,27 @@
         dark:bg-greendark
       "
     >
-      <div class="flex justify-between w-full max-w-2xl p-4 pb-6 pt-10">
+      <div
+        class="
+          flex flex-col
+          justify-between
+          w-full
+          max-w-3xl
+          p-4
+          pb-6
+          pt-10
+          sm:flex-row
+        "
+      >
         <h1
           class="sm:w-80 text-3xl font-bold uppercase border-b-2 border-white"
         >
           Student logs
         </h1>
-        <div id="darkmodeToggle" class="hover:cursor-pointer flex items-center">
+        <div
+          id="darkmodeToggle"
+          class="hover:cursor-pointer flex items-end mt-2 self-end"
+        >
           <p class="text-white pr-2">Dark mode</p>
           <div
             id="toggleTrack"
@@ -73,11 +100,12 @@
               relative
               w-8
               h-4
+              mb-1
               bg-silver
               border-silver
               rounded-full
               transition-all
-              dark:bg-browndark
+              dark:bg-silver
             "
           >
             <div
@@ -99,7 +127,7 @@
     </div>
     <main class="px-4">
       <div class="flex justify-center">
-        <form class="flex flex-wrap w-full max-w-2xl" id="logForm">
+        <form class="flex flex-wrap w-full max-w-3xl" id="logForm">
           <section class="w-full sm:w-1/3 p-4">
             <h2
               class="

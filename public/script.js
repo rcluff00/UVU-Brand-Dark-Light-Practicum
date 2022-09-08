@@ -26,7 +26,10 @@ $courseInput.on('change', () => {
   }
 })
 
-$('#darkmodeToggle').on('click', toggleDarkmode)
+$('#darkmodeToggle').on('click', function () {
+  toggleDarkmode()
+  updateDarkmodePref()
+})
 
 // FUNCTION DEFINITIONS ===============================
 
@@ -65,7 +68,6 @@ async function refreshCourseSelect() {
     .get(url)
     .then(function (response) {
       // handle success
-      console.log(response)
       let json = response.data
       for (let i = 0; i < json.length; i++) {
         courseSelect.append(
@@ -123,13 +125,14 @@ function showLogs(json) {
   $logsList
     .children('li')
     .addClass(
-      `group mb-4 py-1 px-3 border-l-4 border-green hover:cursor-pointer hover:bg-greylight hover:border-greenlight dark:hover:bg-browndark2`
+      `group mb-4 py-1 px-3 border-l-4 border-green hover:cursor-pointer hover:bg-greylight hover:border-greenlight dark:hover:bg-greydark dark:hover:drop-shadow-md dark:border-greenlight`
     )
   $logsList.children('small').addClass(
     `text-sm
       font-bold
       text-green
-      group-hover:text-greenlight`
+      group-hover:text-greenlight
+      dark:text-greenlight`
   )
   $logsList.children('pre').addClass(`whitespace-pre-wrap dark:text-white`)
   $logsDiv.css('display', 'block')
@@ -158,9 +161,6 @@ function postLog(event) {
       text: $('#logBodyInput').val(),
       id: createUUID(),
     })
-    .then(function (response) {
-      console.log(response)
-    })
     .catch(function (error) {
       console.log(error)
     })
@@ -169,6 +169,7 @@ function postLog(event) {
   $('#logBodyInput').val('')
 }
 
+// set darkmode on or off
 function toggleDarkmode(onBool) {
   if (onBool === true) {
     $('html').addClass('dark')
@@ -177,7 +178,44 @@ function toggleDarkmode(onBool) {
   } else {
     $('html').toggleClass('dark')
   }
+}
 
+// initialize darkmode with site or os preference
+function initDarkmode() {
+  let userPref
+  let osPref
+
+  // get user pref
+  if (localStorage.getItem('darkmodePref')) {
+    userPref = localStorage.getItem('darkmodePref')
+  } else {
+    userPref = 'unknown'
+  }
+
+  // get os pref
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    osPref = 'dark'
+  } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    osPref = 'light'
+  } else {
+    osPref = 'unknown'
+  }
+
+  if (userPref != 'unknown') {
+    if (userPref == 'dark') toggleDarkmode(true)
+    else if (userPref == 'light') toggleDarkmode(false)
+  } else {
+    if (osPref == 'dark') toggleDarkmode(true)
+    else if (osPref == 'light') toggleDarkmode(false)
+  }
+
+  console.log(`User Pref: ${userPref}`)
+  console.log(`Browser Pref: <unavailable>`)
+  console.log(`OS Pref: ${osPref}`)
+}
+
+// save user site preference for darkmode
+function updateDarkmodePref() {
   if ($('html').hasClass('dark')) {
     localStorage.setItem('darkmodePref', 'dark')
   } else {
@@ -192,18 +230,4 @@ function createUUID() {
       v = c == 'x' ? r : (r & 0x3) | 0x8
     return v.toString(16)
   })
-}
-
-function initDarkmode() {
-  if (localStorage.getItem('darkmodePref')) {
-    let pref = localStorage.getItem('darkmodePref')
-    if (pref == 'dark') toggleDarkmode(true)
-    else toggleDarkmode(false)
-  } else {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      toggleDarkmode(true)
-    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-      toggleDarkmode(false)
-    }
-  }
 }
