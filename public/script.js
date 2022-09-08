@@ -173,10 +173,10 @@ function postLog(event) {
   $('#logBodyInput').val('')
 }
 
-function toggleDarkmode(enabled) {
-  if (enabled === true) {
+function toggleDarkmode(onBool) {
+  if (onBool === true) {
     $('html').addClass('dark')
-  } else if (eneabled === false) {
+  } else if (onBool === false) {
     $('html').removeClass('dark')
   } else {
     $('html').toggleClass('dark')
@@ -185,12 +185,8 @@ function toggleDarkmode(enabled) {
   if ($('html').hasClass('dark')) {
     localStorage.setItem('darkmodePref', 'dark')
   } else {
-    localStorage.setItem('darkmodePref', 'dark')
+    localStorage.setItem('darkmodePref', 'light')
   }
-}
-
-function toggleDarkmode() {
-  $('html').toggleClass('dark')
 }
 
 // creat unique id
