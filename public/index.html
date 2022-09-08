@@ -1,148 +1,234 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="">
   <head>
     <title>Student Log</title>
     <meta charset="UTF-8" />
     <link
       rel="shortcut icon"
-      href="https://ryancluff.com/cs4690/img/logs.png"
+      href="https://ryancluff.com/cs4690/img/uvu-favicon.png"
       type="image/x-icon"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rajdhani&family=Raleway:wght@400;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Rajdhani:wght@400;600&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="bg-greylight dark:bg-greydark">
-    <div class="flex justify-center w-full bg-greenuvu text-white mb-4">
-      <div class="w-full max-w-2xl p-4 pb-6 pt-10">
-        <div class="darkmode-toggle">
-          <p>Dark mode</p>
-          <div class="darkmode-slider"></div>
-          <div class="darkmode-btn"></div>
-        </div>
-
-        <h1 class="text-3xl font-bold uppercase border-b-2 border-white">
+  <body class="bg-greylight dark:bg-browndark">
+    <header class="bg-white"></header>
+    <div
+      class="
+        flex
+        justify-center
+        w-full
+        bg-green
+        text-white
+        mb-4
+        dark:bg-greendark
+      "
+    >
+      <div class="flex justify-between w-full max-w-2xl p-4 pb-6 pt-10">
+        <h1
+          class="sm:w-80 text-3xl font-bold uppercase border-b-2 border-white"
+        >
           Student logs
         </h1>
+        <div id="darkmodeToggle" class="hover:cursor-pointer flex items-center">
+          <p class="text-white pr-2">Dark mode</p>
+          <div
+            id="toggleTrack"
+            class="
+              relative
+              w-8
+              h-4
+              bg-silver
+              border-silver
+              rounded-full
+              transition-all
+              dark:bg-browndark
+            "
+          >
+            <div
+              id="toggleBtn"
+              class="
+                absolute
+                left-0
+                h-4
+                w-4
+                bg-white
+                rounded-full
+                transition-all
+                dark:left-4
+              "
+            ></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="flex justify-center">
-      <form class="flex w-full max-w-2xl" id="logForm">
-        <section class="w-full sm:w-1/3 p-4">
-          <h2 class="mb-2 text-xl font-bold text-greenuvu uppercase">
-            Student <span class="font-normal text-black">Information</span>
-          </h2>
-          <label class="block mb-1 font-semibold text-greenuvu" for="course"
-            >Course</label
-          >
-          <select
-            class="
-              w-full
-              bg-white
-              px-3
-              py-2
-              border-2 border-greenuvu
-              text-greenuvu
-            "
-            aria-label="Select Course"
-            id="course"
-            name="course"
-            data-cy="course_select"
-          >
-            <option selected value="">Choose Courses</option>
-            <option value="cs4690">CS 4690</option>
-            <option value="cs4660">CS 4660</option>
-            <option value="cs3380">CS 3380</option>
-          </select>
-
-          <div class="uvu-id hidden">
-            <label
-              class="block mb-1 mt-3 font-semibold text-greenuvu"
-              for="uvuId"
-              >UVU ID</label
+    <main class="px-4">
+      <div class="flex justify-center">
+        <form class="flex flex-wrap w-full max-w-2xl" id="logForm">
+          <section class="w-full sm:w-1/3 p-4">
+            <h2
+              class="
+                mb-2
+                text-xl
+                font-bold
+                text-green
+                uppercase
+                dark:text-greenlight
+              "
             >
+              Student
+              <span class="font-normal text-black dark:text-white"
+                >Information</span
+              >
+            </h2>
+            <label
+              class="block mb-1 font-semibold text-green dark:text-greenlight"
+              for="course"
+              >Course</label
+            >
+            <select
+              class="
+                w-full
+                bg-white
+                px-3
+                py-2
+                border-2 border-green
+                text-green
+                dark:bg-browndark dark:text-white dark:border-greenlight
+              "
+              aria-label="Select Course"
+              id="course"
+              name="course"
+              data-cy="course_select"
+            >
+              <option selected value="">Choose Courses</option>
+              <option value="cs4690">CS 4690</option>
+              <option value="cs4660">CS 4660</option>
+              <option value="cs3380">CS 3380</option>
+            </select>
 
-            <input
-              class="w-full bg-white border-2 border-greenuvu py-2 px-3"
-              type="text"
-              id="uvuId"
-              name="uvuId"
-              data-cy="uvuId_input"
-              maxlength="8"
-              pattern="[0-9]{0,8}"
-              placeholder="10234567"
-            />
-          </div>
-        </section>
+            <div class="uvu-id hidden">
+              <label
+                class="
+                  block
+                  mb-1
+                  mt-3
+                  font-semibold
+                  text-green
+                  dark:text-greenlight
+                "
+                for="uvuId"
+                >UVU ID</label
+              >
 
-        <section
-          class="w-full sm:w-2/3 bg-white p-4 drop-shadow-md dark:bg-[#757677]"
-        >
-          <h2
-            class="mb-2 text-xl font-bold text-greenuvu uppercase"
-            id="uvuIdDisplay"
-            data-cy="uvuIdDisplay"
+              <input
+                class="
+                  w-full
+                  bg-transparent
+                  border-2 border-green
+                  py-2
+                  px-3
+                  dark:text-white dark:border-greenlight
+                "
+                type="text"
+                id="uvuId"
+                name="uvuId"
+                data-cy="uvuId_input"
+                maxlength="8"
+                pattern="[0-9]{0,8}"
+                placeholder="10234567"
+              />
+            </div>
+          </section>
+
+          <section
+            class="w-full sm:w-2/3 bg-white p-4 drop-shadow-md dark:bg-greydark"
           >
-            Student <span class="text-black font-normal">logs</span>
-            <span id="uvuIdSpan"></span>
-          </h2>
-          <div class="logs-div">
-            <ul data-cy="logs" id="logsUl">
-              <li>
-                <div>
-                  <small>1/23/2021 1:23:36 PM</small>
-                </div>
-                <pre><p>Initial comment. Hello World</p></pre>
-              </li>
-              <li>
-                <div><small>1/24/2021 2:43:12 PM</small></div>
-                <pre><p>MongoDB is looking really good, still need to get atlas up and running.</p></pre>
-              </li>
-              <li>
-                <div><small>1/27/2021 5:58:10 PM</small></div>
-                <pre><p>Atlas is up and running</p></pre>
-              </li>
-            </ul>
-          </div>
-          <label
-            class="block mb-1 font-semibold text-greenuvu"
-            for="logBodyInput"
-            >New Log
-          </label>
-          <textarea
-            class="w-full border-2 border-greenuvu p-1 mb-4"
-            id="logBodyInput"
-            style="height: 75px"
-            aria-label="add log textarea"
-            data-cy="log_textarea"
-          ></textarea>
+            <h2
+              class="
+                mb-2
+                text-xl
+                font-bold
+                text-green
+                uppercase
+                dark:text-greenlight
+              "
+              id="uvuIdDisplay"
+              data-cy="uvuIdDisplay"
+            >
+              Student
+              <span class="text-black font-normal dark:text-white">logs</span>
+              <span
+                class="text-black font-normal dark:text-white"
+                id="uvuIdSpan"
+              ></span>
+            </h2>
+            <div class="logs-div">
+              <ul data-cy="logs" id="logsUl">
+                <li>
+                  <div>
+                    <small>1/23/2021 1:23:36 PM</small>
+                  </div>
+                  <pre><p>Initial comment. Hello World</p></pre>
+                </li>
+                <li>
+                  <div><small>1/24/2021 2:43:12 PM</small></div>
+                  <pre><p>MongoDB is looking really good, still need to get atlas up and running.</p></pre>
+                </li>
+                <li>
+                  <div><small>1/27/2021 5:58:10 PM</small></div>
+                  <pre><p>Atlas is up and running</p></pre>
+                </li>
+              </ul>
+            </div>
+            <label
+              class="block mb-1 font-semibold text-green dark:text-greenlight"
+              for="logBodyInput"
+              >New Log
+            </label>
+            <textarea
+              class="
+                w-full
+                bg-transparent
+                border-2 border-green
+                p-1
+                mb-4
+                dark:text-white dark:border-greenlight
+              "
+              id="logBodyInput"
+              style="height: 75px"
+              aria-label="add log textarea"
+              data-cy="log_textarea"
+            ></textarea>
 
-          <button
-            class="
-              bg-greenuvu
-              py-2
-              px-4
-              text-white
-              hover:bg-[#00843d]
-              disabled:bg-silver disabled:text-[#e8e8e8]
-              transition
-            "
-            id="submit"
-            type="submit"
-            data-cy="add_log_btn"
-            disabled
-          >
-            Add Log
-          </button>
-        </section>
-      </form>
-    </div>
+            <button
+              class="
+                bg-green
+                py-2
+                px-4
+                text-white
+                hover:bg-greenlight
+                disabled:bg-silver disabled:text-greydark
+                transition
+              "
+              id="submit"
+              type="submit"
+              data-cy="add_log_btn"
+              disabled
+            >
+              Add Log
+            </button>
+          </section>
+        </form>
+      </div>
+    </main>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -152,7 +238,12 @@
             colors: {
               greylight: '#f9f9f9',
               greydark: '#434344',
-              greenuvu: '#275d38',
+              greydark2: '#757677',
+              browndark: '#2a2723',
+              browndark2: '#4a443e',
+              green: '#275d38',
+              greenlight: '#00843d',
+              greendark: '#1e482c',
               silver: '#8e8c89',
             },
           },

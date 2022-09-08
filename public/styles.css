@@ -3,5 +3,9 @@ body {
 }
 
 h1 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+pre {
+  font-family: 'Rajdhani', sans-serif !important;
 }

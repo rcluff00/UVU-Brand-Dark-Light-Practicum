@@ -3,6 +3,14 @@ let $uvuIdInput = $('#uvuId')
 let $courseInput = $('#course')
 let $logsDiv = $('.logs-div')
 
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  toggleDarkmode(true)
+} else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+  toggleDarkmode(false)
+}
+//TODO print darkmode preferences
+//TODO store preference in LocalStorage
+
 $logsDiv.css('display', 'none')
 refreshCourseSelect()
 
@@ -25,6 +33,8 @@ $courseInput.on('change', () => {
     $uvuIdInputDiv.css('display', 'none')
   }
 })
+
+$('#darkmodeToggle').on('click', toggleDarkmode)
 
 // FUNCTION DEFINITIONS ===============================
 
@@ -121,15 +131,15 @@ function showLogs(json) {
   $logsList
     .children('li')
     .addClass(
-      `group mb-4 py-1 px-3 border-l-4 border-greenuvu hover:cursor-pointer hover:bg-[#f9f9f9] hover:border-[#00843d]`
+      `group mb-4 py-1 px-3 border-l-4 border-green hover:cursor-pointer hover:bg-greylight hover:border-greenlight dark:hover:bg-browndark2`
     )
   $logsList.children('small').addClass(
     `text-sm
       font-bold
-      text-greenuvu
-      group-hover:text-[#00843d]`
+      text-green
+      group-hover:text-greenlight`
   )
-  $logsList.children('pre').addClass(`whitespace-pre-wrap`)
+  $logsList.children('pre').addClass(`whitespace-pre-wrap dark:text-white`)
   $logsDiv.css('display', 'block')
 
   $('#uvuIdSpan').text(`for ${$uvuIdInput.val()}`)
@@ -165,6 +175,20 @@ function postLog(event) {
 
   refreshLogs()
   $('#logBodyInput').val('')
+}
+
+function toggleDarkmode(enabled) {
+  if (enabled === true) {
+    $('html').addClass('dark')
+  } else if (eneabled === false) {
+    $('html').removeClass('dark')
+  } else {
+    $('html').toggleClass('dark')
+  }
+}
+
+function toggleDarkmode() {
+  $('html').toggleClass('dark')
 }
 
 // creat unique id
