@@ -46,6 +46,10 @@ class ElementCollection extends Array {
     })
   }
 
+  hasClass(className) {
+    return this[0].classList.contains(className)
+  }
+
   attr(attr, val) {
     if (typeof val === 'string' || val instanceof String) {
       if (attr == 'disabled') {

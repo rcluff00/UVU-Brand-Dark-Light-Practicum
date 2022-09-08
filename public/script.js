@@ -3,15 +3,11 @@ let $uvuIdInput = $('#uvuId')
 let $courseInput = $('#course')
 let $logsDiv = $('.logs-div')
 
-if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  toggleDarkmode(true)
-} else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-  toggleDarkmode(false)
-}
 //TODO print darkmode preferences
 //TODO store preference in LocalStorage
 
 $logsDiv.css('display', 'none')
+initDarkmode()
 refreshCourseSelect()
 
 // EVENT LISTENERS ====================================
@@ -185,6 +181,12 @@ function toggleDarkmode(enabled) {
   } else {
     $('html').toggleClass('dark')
   }
+
+  if ($('html').hasClass('dark')) {
+    localStorage.setItem('darkmodePref', 'dark')
+  } else {
+    localStorage.setItem('darkmodePref', 'dark')
+  }
 }
 
 function toggleDarkmode() {
@@ -198,4 +200,18 @@ function createUUID() {
       v = c == 'x' ? r : (r & 0x3) | 0x8
     return v.toString(16)
   })
+}
+
+function initDarkmode() {
+  if (localStorage.getItem('darkmodePref')) {
+    let pref = localStorage.getItem('darkmodePref')
+    if (pref == 'dark') toggleDarkmode(true)
+    else toggleDarkmode(false)
+  } else {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      toggleDarkmode(true)
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+      toggleDarkmode(false)
+    }
+  }
 }
