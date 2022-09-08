@@ -19,7 +19,35 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="bg-greylight dark:bg-browndark">
-    <header class="bg-white"></header>
+    <header class="h-20 bg-white flex justify-center">
+      <div class="w-full max-w-2xl p-4 flex justify-between items-center">
+        <div>
+          <img
+            src="https://ryancluff.com/cs4690/img/uvu-logo.png"
+            class="w-40"
+            alt=""
+          />
+        </div>
+        <div class="hidden">
+          <button class="py-1 px-6 mr-2 rounded-full bg-green text-white">
+            Apply to UVU
+          </button>
+          <button class="py-1 px-6 mr-2 rounded-full bg-silver text-white">
+            Why UVU
+          </button>
+          <button class="py-1 px-6 rounded-full bg-silver text-white">
+            MyUVU
+          </button>
+        </div>
+        <div class="">
+          <div class="hamburger flex flex-col justify-between w-7 h-5">
+            <div class="w-full bg-green h-1"></div>
+            <div class="w-full bg-green h-1"></div>
+            <div class="w-full bg-green h-1"></div>
+          </div>
+        </div>
+      </div>
+    </header>
     <div
       class="
         flex
@@ -170,7 +198,7 @@
                 id="uvuIdSpan"
               ></span>
             </h2>
-            <div class="logs-div">
+            <div class="logs-div hidden">
               <ul data-cy="logs" id="logsUl">
                 <li>
                   <div>

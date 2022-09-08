@@ -3,10 +3,6 @@ let $uvuIdInput = $('#uvuId')
 let $courseInput = $('#course')
 let $logsDiv = $('.logs-div')
 
-//TODO print darkmode preferences
-//TODO store preference in LocalStorage
-
-$logsDiv.css('display', 'none')
 initDarkmode()
 refreshCourseSelect()
 
