@@ -61,8 +61,7 @@ async function refreshCourseSelect() {
   let courseSelect = $('#course')
   let courseOptions = $('#course option:not(:first-child')
   courseOptions.remove()
-  let url =
-    'https://json-server-5phigi--3000.local.webcontainer.io/api/v1/courses'
+  let url = 'http://localhost:3000/api/v1/courses'
 
   axios
     .get(url)
@@ -85,7 +84,7 @@ async function refreshCourseSelect() {
 async function refreshLogs() {
   let courseId = $('#course').val()
   let uvuId = $('#uvuId').val()
-  let url = `https://json-server-5phigi--3000.local.webcontainer.io/api/v1/logs`
+  let url = `http://localhost:3000/api/v1/logs`
 
   // fetch log info
   axios
@@ -151,7 +150,7 @@ function postLog(event) {
   let amPm = d.getHours() < 12 ? 'AM' : 'PM'
   let time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} ${amPm}`
 
-  let url = 'https://json-server-5phigi--3000.local.webcontainer.io/api/v1/logs'
+  let url = 'http:localhost:3000/api/v1/logs'
 
   axios
     .post(url, {
